@@ -19,11 +19,7 @@ public class GildedRose {
         if (item.sellIn < 0) {
             if (!item.name.equals("Aged Brie")) {
                 if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (item.quality > 0) {
-                        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
+                    subtractOneQuality(item);
                 } else {
                     item.quality = 0;
                 }
@@ -51,11 +47,7 @@ public class GildedRose {
                 }
                 break;
             default:
-                if (item.quality > 0) {
-                    if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                        item.quality--;
-                    }
-                }
+                subtractOneQuality(item);
                 break;
         }
     }
@@ -74,6 +66,14 @@ public class GildedRose {
     private void addOneQuality(Item item) {
         if (item.quality < 50) {
             item.quality++;
+        }
+    }
+
+    private void subtractOneQuality(Item item) {
+        if (item.quality > 0) {
+            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                item.quality--;
+            }
         }
     }
 }
