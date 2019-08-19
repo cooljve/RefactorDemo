@@ -2,15 +2,21 @@ package gildedRose;
 
 import org.junit.Test;
 
+import static gildedRose.GildedRose.AGED_BRIE;
+import static gildedRose.GildedRose.BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT;
+import static gildedRose.GildedRose.SULFURAS_HAND_OF_RAGNAROS;
 import static org.junit.Assert.assertEquals;
 
 public class GildedRoseTest {
-  @Test
+
+    public static final String OTHER = "Other";
+
+    @Test
   public void testUpdateQualityForOther() {
     Item[] items = new Item[]{
-        new Item("Other",1,10),
-        new Item("Other",0,10),
-        new Item("Other",0,-1),
+        new Item(OTHER,1,10),
+        new Item(OTHER,0,10),
+        new Item(OTHER,0,-1),
     };
     GildedRose gildedRose = new GildedRose(items);
 
@@ -27,9 +33,9 @@ public class GildedRoseTest {
   @Test
   public void testUpdateQualityForAgedBrie() {
     Item[] items = new Item[]{
-        new Item("Aged Brie",1,10),
-        new Item("Aged Brie",0,10),
-        new Item("Aged Brie",0,50),
+        new Item(AGED_BRIE,1,10),
+        new Item(AGED_BRIE,0,10),
+        new Item(AGED_BRIE,0,50),
     };
     GildedRose gildedRose = new GildedRose(items);
 
@@ -46,13 +52,13 @@ public class GildedRoseTest {
   @Test
   public void testUpdateQualityForBackstage() {
     Item[] items = new Item[]{
-        new Item("Backstage passes to a TAFKAL80ETC concert",10,10),
-        new Item("Backstage passes to a TAFKAL80ETC concert",5,10),
-        new Item("Backstage passes to a TAFKAL80ETC concert",0,10),
-        new Item("Backstage passes to a TAFKAL80ETC concert",11,10),
-        new Item("Backstage passes to a TAFKAL80ETC concert",1,50),
-        new Item("Backstage passes to a TAFKAL80ETC concert",0,50),
-        new Item("Backstage passes to a TAFKAL80ETC concert",5,49),
+        new Item(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT,10,10),
+        new Item(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT,5,10),
+        new Item(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT,0,10),
+        new Item(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT,11,10),
+        new Item(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT,1,50),
+        new Item(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT,0,50),
+        new Item(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT,5,49),
     };
     GildedRose gildedRose = new GildedRose(items);
 
@@ -77,9 +83,9 @@ public class GildedRoseTest {
   @Test
   public void testUpdateQualityForSulfuras() {
     Item[] items = new Item[]{
-        new Item("Sulfuras, Hand of Ragnaros",10,10),
-        new Item("Sulfuras, Hand of Ragnaros",5,10),
-        new Item("Sulfuras, Hand of Ragnaros",0,10),
+        new Item(SULFURAS_HAND_OF_RAGNAROS,10,10),
+        new Item(SULFURAS_HAND_OF_RAGNAROS,5,10),
+        new Item(SULFURAS_HAND_OF_RAGNAROS,0,10),
     };
     GildedRose gildedRose = new GildedRose(items);
 
