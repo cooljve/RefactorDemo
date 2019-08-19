@@ -2,7 +2,7 @@ package gildedRose.items;
 
 import gildedRose.Item;
 
-public class BackstageItem implements ItemStrategy {
+public class BackstageItem extends ItemStrategy {
     @Override
     public void update(Item item) {
         if (item.quality < 50) {
@@ -21,12 +21,6 @@ public class BackstageItem implements ItemStrategy {
         }
         if (item.sellIn < 6) {
             addOneQuality(item);
-        }
-    }
-
-    private void addOneQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality++;
         }
     }
 }

@@ -2,13 +2,7 @@ package gildedRose.items;
 
 import gildedRose.Item;
 
-public class AgedBrieItem implements ItemStrategy {
-
-    private void addOneQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality++;
-        }
-    }
+public class AgedBrieItem extends ItemStrategy {
 
     @Override
     public void update(Item item) {

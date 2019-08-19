@@ -10,6 +10,7 @@ public class GildedRoseTest {
     Item[] items = new Item[]{
         new Item("Other",1,10),
         new Item("Other",0,10),
+        new Item("Other",0,-1),
     };
     GildedRose gildedRose = new GildedRose(items);
 
@@ -19,6 +20,8 @@ public class GildedRoseTest {
     assertEquals(0, items[0].sellIn);
     assertEquals(8, items[1].quality);
     assertEquals(-1, items[1].sellIn);
+    assertEquals(-1, items[2].quality);
+    assertEquals(-1, items[2].sellIn);
   }
 
   @Test

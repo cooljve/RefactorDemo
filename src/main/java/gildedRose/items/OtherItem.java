@@ -2,7 +2,7 @@ package gildedRose.items;
 
 import gildedRose.Item;
 
-public class OtherItem implements ItemStrategy {
+public class OtherItem extends ItemStrategy {
     @Override
     public void update(Item item) {
         subtractOneQuality(item);
