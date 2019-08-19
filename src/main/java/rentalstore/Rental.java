@@ -22,19 +22,15 @@ public class Rental {
     return totalPrice;
   }
 
-  public String generateDetail() {
-    return "\t" + movie.getTitle() + "\t" + getTotalPrice() + "\n";
-  }
-
-  public String generateHtmlDetail() {
-      return movie.getTitle() + ": " + getTotalPrice() + "<BR>";
-  }
-
   public boolean isMovieNewRelease() {
     return movie.getPriceCode() == Movie.NEW_RELEASE;
   }
 
   public int getDayRented() {
     return dayRented;
+  }
+
+  public String getTitle() {
+    return movie.getTitle();
   }
 }

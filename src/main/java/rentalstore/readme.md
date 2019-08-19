@@ -16,7 +16,7 @@ You earned 1 frequent renter points<br>
 ```
 <H1>Rentals for <EM>Jerry</EM></H1><P>
 Roman Holiday: 3.0<BR>
-Titanic: 3.0<BR>
+Titanic: 3.0<BR></P>
 <P>You owe<EM>6.0</EM><P>
 On this rental you earned <EM>2</EM> frequent renter points<P>
 ```
