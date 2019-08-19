@@ -17,12 +17,16 @@ public class GildedRose {
 
     private void updateCase3(Item item) {
         if (item.sellIn < 0) {
-            if (item.name.equals("Aged Brie")) {
-                addOneQuality(item);
-            } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                item.quality = 0;
-            } else {
-                subtractOneQuality(item);
+            switch (item.name) {
+                case "Aged Brie":
+                    addOneQuality(item);
+                    break;
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    item.quality = 0;
+                    break;
+                default:
+                    subtractOneQuality(item);
+                    break;
             }
         }
 
