@@ -1,8 +1,6 @@
 package gildedRose;
 
-import gildedRose.items.AgedBrieItem;
-import gildedRose.items.BackstageItem;
-import gildedRose.items.OtherItem;
+import gildedRose.items.*;
 
 public class GildedRose {
     Item[] items;
@@ -12,20 +10,22 @@ public class GildedRose {
     }
 
     public void updateQuality() {
+        ItemStrategy strategy;
         for (Item item : items) {
             switch (item.name) {
                 case "Aged Brie":
-                    new AgedBrieItem().update(item);
+                    strategy = new AgedBrieItem();
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
-                    new BackstageItem().update(item);
+                    strategy = new BackstageItem();
                     break;
                 case "Sulfuras, Hand of Ragnaros":
+                    strategy = new SulfurasItem();
                     break;
                 default:
-                    new OtherItem().update(item);
-                    break;
+                    strategy = new OtherItem();
             }
+            strategy.update(item);
         }
     }
 }
