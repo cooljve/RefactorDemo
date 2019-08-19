@@ -22,43 +22,32 @@ public class Customer {
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        String result = "Rental Record for " + getName() + "\n";
-        for (Rental each : this.rentals) {
-            double thisAmount = 0;
+        String result = generateHeader();
+        for (Rental rental : this.rentals) {
+            double thisAmount = rental.getTotalPrice();
 
-            switch (each.getMovie().getPriceCode()) {
-                case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (each.getDayRented() > 2) {
-                        thisAmount += (each.getDayRented() - 2) * 1.5;
-                    }
-                    break;
-                case Movie.NEW_RELEASE:
-                    thisAmount += each.getDayRented() * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if (each.getDayRented() > 3) {
-                        thisAmount += (each.getDayRented() - 3) * 1.5;
-                    }
-                    break;
-            }
-
-            //add frequent renter points
             frequentRenterPoints++;
-            //add bonus for a two day new release rental
-            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDayRented() > 1) {
+
+            int newReleaseThreshold = 1;
+            if ((rental.isMovieNewRelease()) && rental.getDayRented() > newReleaseThreshold) {
                 frequentRenterPoints++;
             }
 
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+            result += rental.generateDetail();
             totalAmount += thisAmount;
         }
 
         //add footer lines
-        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+        result += getFooter(totalAmount, frequentRenterPoints);
         return result;
+    }
+
+    private String getFooter(double totalAmount, int frequentRenterPoints) {
+        return "Amount owed is " + totalAmount + "\n" + "You earned " + frequentRenterPoints + " frequent renter points";
+    }
+
+    private String generateHeader() {
+        return "Rental Record for " + getName() + "\n";
     }
 }
