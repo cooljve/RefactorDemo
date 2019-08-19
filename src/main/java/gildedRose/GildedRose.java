@@ -9,49 +9,40 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            updateCase1(item);
-            updateCase2(item);
-            updateCase3(item);
-        }
-    }
-
-    private void updateCase3(Item item) {
-        if (item.sellIn < 0) {
             switch (item.name) {
                 case "Aged Brie":
                     addOneQuality(item);
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
-                    item.quality = 0;
+                    if (item.quality < 50) {
+                        item.quality++;
+                        updateBackstageQuality(item);
+                    }
                     break;
                 default:
                     subtractOneQuality(item);
                     break;
             }
-        }
+            switch (item.name) {
+                case "Sulfuras, Hand of Ragnaros":
+                    break;
+                default:
+                    item.sellIn--;
+            }
 
-    }
-
-    private void updateCase2(Item item) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            item.sellIn--;
-        }
-    }
-
-    private void updateCase1(Item item) {
-        switch (item.name) {
-            case "Aged Brie":
-                addOneQuality(item);
-                break;
-            case "Backstage passes to a TAFKAL80ETC concert":
-                if (item.quality < 50) {
-                    item.quality++;
-                    updateBackstageQuality(item);
+            if (item.sellIn < 0) {
+                switch (item.name) {
+                    case "Aged Brie":
+                        addOneQuality(item);
+                        break;
+                    case "Backstage passes to a TAFKAL80ETC concert":
+                        item.quality = 0;
+                        break;
+                    default:
+                        subtractOneQuality(item);
+                        break;
                 }
-                break;
-            default:
-                subtractOneQuality(item);
-                break;
+            }
         }
     }
 
