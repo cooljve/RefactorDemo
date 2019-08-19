@@ -1,5 +1,7 @@
 package gildedRose;
 
+import gildedRose.items.AgedBrieItem;
+
 public class GildedRose {
     Item[] items;
 
@@ -11,11 +13,7 @@ public class GildedRose {
         for (Item item : items) {
             switch (item.name) {
                 case "Aged Brie":
-                    addOneQuality(item);
-                    item.sellIn--;
-                    if (item.sellIn < 0) {
-                        addOneQuality(item);
-                    }
+                    new AgedBrieItem().update(item);
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
                     if (item.quality < 50) {
