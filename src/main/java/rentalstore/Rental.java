@@ -26,6 +26,10 @@ public class Rental {
     return "\t" + movie.getTitle() + "\t" + getTotalPrice() + "\n";
   }
 
+  public String generateHtmlDetail() {
+      return movie.getTitle() + ": " + getTotalPrice() + "<BR>";
+  }
+
   public boolean isMovieNewRelease() {
     return movie.getPriceCode() == Movie.NEW_RELEASE;
   }

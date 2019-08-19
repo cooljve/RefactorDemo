@@ -96,4 +96,32 @@ public class CustomerTest {
     assertEquals(res, statement);
   }
 
+  @Test
+  public void should_return_empty_html_statement_when_invoke_statement_given_no_rental() {
+    Customer customer = new Customer("JOI");
+
+    String statement = customer.generateHtml();
+    String res = "<H1>Rentals for <EM>JOI</EM></H1><P>\n</P>\n" +
+        "<P>You owe<EM>0.0</EM><P>\n" +
+        "On this rental you earned <EM>0</EM> frequent renter points<P>";
+
+    assertEquals(res, statement);
+  }
+
+  @Test
+  public void should_return_regular_html_statement_when_invoke_statement_given_movie_type_is_regular_and_day_rented_is_3() {
+    Customer customer = new Customer("JOI");
+    Movie movie = new Movie("BLADE RUNNER", 0);
+    Rental rental = new Rental(movie, 3);
+    customer.addRental(rental);
+
+    String statement = customer.generateHtml();
+
+    String res = "<H1>Rentals for <EM>JOI</EM></H1><P>\n" +
+        "BLADE RUNNER: 3.5<BR></P>\n" +
+        "<P>You owe<EM>3.5</EM><P>\n" +
+        "On this rental you earned <EM>1</EM> frequent renter points<P>";
+    assertEquals(res, statement);
+  }
+
 }
