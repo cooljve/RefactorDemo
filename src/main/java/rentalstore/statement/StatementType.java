@@ -10,18 +10,19 @@ public abstract class StatementType {
     int frequentRenterPoints = 0;
     String result = getHeader(name);
     for (Rental rental : rentals) {
-      double thisAmount = rental.getTotalPrice();
       frequentRenterPoints++;
       int newReleaseThreshold = 1;
-      if ((rental.isMovieNewRelease()) && rental.getDayRented() > newReleaseThreshold) {
+      boolean rentManyDay = rental.getDayRented() > newReleaseThreshold;
+      if ((rental.isMovieNewRelease()) && rentManyDay) {
         frequentRenterPoints++;
       }
       result += getDetail(rental);
-      totalAmount += thisAmount;
+      totalAmount += rental.getTotalPrice();
     }
     result += getFooter(totalAmount, frequentRenterPoints);
     return result;
   }
+
   protected abstract String getFooter(double totalAmount, int frequentRenterPoints);
   protected abstract String getHeader(String name);
   protected abstract String getDetail(Rental rental);

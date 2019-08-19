@@ -1,14 +1,11 @@
 package rentalstore;
 
 import rentalstore.factory.MovieTypeFactory;
-import rentalstore.movieType.ChildrenMovie;
 import rentalstore.movieType.MovieType;
-import rentalstore.movieType.NewReleaseMovie;
-import rentalstore.movieType.RegularMovie;
 
 public class Rental {
   private Movie movie;
-  private MovieType movieType = null;
+  private MovieType movieType;
   private int dayRented;
 
   public Rental(Movie movie, int dayRented) {
